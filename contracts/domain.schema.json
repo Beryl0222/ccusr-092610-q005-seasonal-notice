@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "秋季健康提醒规则签发簿领域事件",
+  "type": "object",
+  "required": [
+    "event_id",
+    "event_type",
+    "aggregate_type",
+    "aggregate_id",
+    "occurred_at",
+    "version",
+    "payload"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "SOURCE_REGISTERED",
+        "RULE_REVIEWED",
+        "NOTICE_SIGNED",
+        "NOTICE_SENT",
+        "CORRECTION_OPENED"
+      ]
+    },
+    "aggregate_type": {
+      "type": "string",
+      "enum": [
+        "guidance_source",
+        "audience_rule",
+        "notice_release",
+        "correction_task"
+      ]
+    },
+    "aggregate_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "payload": {
+      "type": "object"
+    }
+  },
+  "payload_required_by_event": {
+    "RULE_REVIEWED": [
+      "audience",
+      "trigger_facts"
+    ],
+    "NOTICE_SIGNED": [
+      "rule_revision",
+      "valid_until"
+    ],
+    "CORRECTION_OPENED": [
+      "affected_release",
+      "reason"
+    ]
+  },
+  "additionalProperties": false
+}
