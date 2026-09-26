@@ -1,5 +1,5 @@
 [project]
 name = "seasonal-notice"
 version = "0.1.0"
-description = "秋季健康提醒规则签发簿领域契约"
+description = "秋季健康提醒规则签发簿：领域契约与规则签发服务"
 requires-python = ">=3.11"

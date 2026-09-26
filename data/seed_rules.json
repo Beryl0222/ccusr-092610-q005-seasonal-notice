@@ -1,0 +1,254 @@
+{
+  "sources": [
+    {
+      "source_id": "src-nhc-2026-autumn",
+      "title": "国家卫健委2026年秋季健康防护提醒",
+      "publisher": "国家卫生健康委员会",
+      "source_url": "https://example.gov.cn/nhc/2026-autumn"
+    },
+    {
+      "source_id": "src-cdc-vector-2026-09",
+      "title": "疾控局2026年9月南方局部地区虫媒传染病风险通告",
+      "publisher": "国家疾病预防控制局",
+      "source_url": "https://example.gov.cn/cdc/2026-09-vector"
+    }
+  ],
+  "rules": [
+    {
+      "rule_id": "rule-travel-fever",
+      "source_id": "src-cdc-vector-2026-09",
+      "valid_days": 30,
+      "region_codes": ["CN-44"],
+      "package": {
+        "title": "近期南方旅居史后发热就医提醒",
+        "audience": {
+          "min_age_months": null,
+          "max_age_months": null,
+          "include_tags": [],
+          "exclude_tags": [],
+          "region_codes": ["CN-44"]
+        },
+        "trigger": {
+          "symptoms": ["fever"],
+          "any_travel_regions": [],
+          "exposure_tags": [],
+          "medications": []
+        },
+        "advice": [
+          {
+            "kind": "routine",
+            "text": "记录体温与行程，防蚊并避免再被叮咬，多饮水休息。",
+            "referral": "none",
+            "medications_ok": []
+          },
+          {
+            "kind": "seek_care",
+            "text": "近14天到过风险地区后出现发热，请尽快到发热门诊就医，并主动告知旅居史，不要自行用药掩盖病情。",
+            "referral": "urgent",
+            "medications_ok": []
+          }
+        ],
+        "stop_conditions": [
+          {
+            "symptom": "confusion",
+            "referral": "emergency",
+            "message": "发热伴意识改变可能为重症虫媒传染病，立即急诊或拨打120。"
+          },
+          {
+            "symptom": "bleeding_rash",
+            "referral": "emergency",
+            "message": "发热伴出血疹提示出血热风险，立即急诊。"
+          }
+        ],
+        "medication_cautions": [
+          {
+            "medication": "aspirin",
+            "message": "疑似虫媒热时不建议自行服用阿司匹林，以免增加出血风险。",
+            "avoid_when_tags": [],
+            "severity": "caution"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "rule-child-diarrhea",
+      "source_id": "src-nhc-2026-autumn",
+      "valid_days": 60,
+      "region_codes": [],
+      "package": {
+        "title": "学龄前儿童腹泻呕吐居家照护与就医边界",
+        "audience": {
+          "min_age_months": 0,
+          "max_age_months": 72,
+          "include_tags": [],
+          "exclude_tags": [],
+          "region_codes": []
+        },
+        "trigger": {
+          "symptoms": ["diarrhea", "vomiting"],
+          "any_travel_regions": [],
+          "exposure_tags": [],
+          "medications": []
+        },
+        "advice": [
+          {
+            "kind": "routine",
+            "text": "少量多次口服补液，清淡饮食，观察并记录大便次数、尿量与精神状态；注意手卫生，呕吐物按诺如防护消毒。",
+            "referral": "none",
+            "medications_ok": ["ors"]
+          }
+        ],
+        "stop_conditions": [
+          {
+            "symptom": "bloody_stool",
+            "referral": "urgent",
+            "message": "血便或黑便须停止居家观察，尽快就医。"
+          },
+          {
+            "symptom": "no_urine_8h",
+            "referral": "urgent",
+            "message": "8小时无尿提示脱水，立即就医。"
+          },
+          {
+            "symptom": "lethargy",
+            "referral": "emergency",
+            "message": "精神萎靡、叫不醒属危急征象，立即急诊。"
+          }
+        ],
+        "medication_cautions": [
+          {
+            "medication": "loperamide",
+            "message": "儿童（尤其伴发热时）不应自行使用洛哌丁胺等强效止泻药。",
+            "avoid_when_tags": ["preschool_child"],
+            "severity": "avoid"
+          }
+        ]
+      }
+    },
+    {
+      "rule_id": "rule-infant-diarrhea-urgent",
+      "source_id": "src-nhc-2026-autumn",
+      "valid_days": 60,
+      "region_codes": [],
+      "package": {
+        "title": "小婴儿腹泻或无法补液尽快就医",
+        "audience": {
+          "min_age_months": 0,
+          "max_age_months": 5,
+          "include_tags": [],
+          "exclude_tags": [],
+          "region_codes": []
+        },
+        "trigger": {
+          "symptoms": ["diarrhea", "vomiting", "cannot_keep_fluids"],
+          "any_travel_regions": [],
+          "exposure_tags": [],
+          "medications": []
+        },
+        "advice": [
+          {
+            "kind": "seek_care",
+            "text": "6月龄以下婴儿出现腹泻呕吐，或持续呕吐不能进水、尿量明显减少，应尽快就医评估脱水。",
+            "referral": "urgent",
+            "medications_ok": []
+          }
+        ],
+        "stop_conditions": [
+          {
+            "symptom": "lethargy",
+            "referral": "emergency",
+            "message": "精神萎靡、叫不醒属危急征象，立即急诊。"
+          }
+        ],
+        "medication_cautions": []
+      }
+    },
+    {
+      "rule_id": "rule-camp-dizziness",
+      "source_id": "src-nhc-2026-autumn",
+      "valid_days": 45,
+      "region_codes": [],
+      "package": {
+        "title": "体重管理训练营头晕处理与停训条件",
+        "audience": {
+          "min_age_months": null,
+          "max_age_months": null,
+          "include_tags": ["training_camp"],
+          "exclude_tags": [],
+          "region_codes": []
+        },
+        "trigger": {
+          "symptoms": ["dizziness"],
+          "any_travel_regions": [],
+          "exposure_tags": [],
+          "medications": []
+        },
+        "advice": [
+          {
+            "kind": "routine",
+            "text": "立即停止训练，到阴凉通风处平卧，补充含电解质水分，少量进食，复测血压心率。",
+            "referral": "none",
+            "medications_ok": []
+          }
+        ],
+        "stop_conditions": [
+          {
+            "symptom": "syncope",
+            "referral": "emergency",
+            "message": "发生晕厥或意识丧失，立即急诊并通知带队人员。"
+          },
+          {
+            "symptom": "chest_pain",
+            "referral": "emergency",
+            "message": "头晕伴胸痛或呼吸困难，立即急诊，不要恢复训练。"
+          },
+          {
+            "symptom": "recurrent_dizziness",
+            "referral": "urgent",
+            "message": "补液休息后仍反复头晕，停止当日训练并就医评估。"
+          }
+        ],
+        "medication_cautions": []
+      }
+    },
+    {
+      "rule_id": "rule-joint-pain-med",
+      "source_id": "src-nhc-2026-autumn",
+      "valid_days": 60,
+      "region_codes": [],
+      "package": {
+        "title": "秋季关节不适自行用药边界",
+        "audience": {
+          "min_age_months": null,
+          "max_age_months": null,
+          "include_tags": [],
+          "exclude_tags": [],
+          "region_codes": []
+        },
+        "trigger": {
+          "symptoms": ["joint_pain"],
+          "any_travel_regions": [],
+          "exposure_tags": [],
+          "medications": ["nsaid"]
+        },
+        "advice": [
+          {
+            "kind": "routine",
+            "text": "注意保暖与适度活动，外用止痛按说明书短期使用；若关节红肿热痛或持续加重应就诊。",
+            "referral": "none",
+            "medications_ok": []
+          }
+        ],
+        "stop_conditions": [],
+        "medication_cautions": [
+          {
+            "medication": "nsaid",
+            "message": "有消化道溃疡或出血史者不应自行服用布洛芬等非甾体抗炎药，需医生评估。",
+            "avoid_when_tags": ["peptic_ulcer_history"],
+            "severity": "avoid"
+          }
+        ]
+      }
+    }
+  ]
+}

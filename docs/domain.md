@@ -10,4 +10,4 @@
 - `NOTICE_SIGNED`：载荷还需包含 `rule_revision`, `valid_until`。
 - `CORRECTION_OPENED`：载荷还需包含 `affected_release`, `reason`。
 
-相同事件标识的业务幂等、冲突隔离和状态推进由上层服务负责；本仓库只定义可稳定交换的基础事实。
+相同事件标识的业务幂等、冲突隔离和状态推进由上层服务负责；本仓库只定义可稳定交换的基础事实。上层服务（三权分立签发、修订不变性、来源更正、确定性匹配、重启重放）见 `service.md`。
