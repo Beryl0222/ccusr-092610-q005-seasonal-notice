@@ -20,10 +20,19 @@
       "type": "string",
       "enum": [
         "SOURCE_REGISTERED",
+        "SOURCE_CORRECTED",
+        "RULE_DRAFTED",
         "RULE_REVIEWED",
+        "RULE_EXPIRED",
         "NOTICE_SIGNED",
         "NOTICE_SENT",
-        "CORRECTION_OPENED"
+        "NOTICE_PAUSED",
+        "NOTICE_EXPIRED",
+        "CORRECTION_OPENED",
+        "CORRECTION_DELIVERED",
+        "CONSULTATION_RECORDED",
+        "CONSULTATION_ESCALATED",
+        "CONSULTATION_RESOLVED"
       ]
     },
     "aggregate_type": {
@@ -32,7 +41,8 @@
         "guidance_source",
         "audience_rule",
         "notice_release",
-        "correction_task"
+        "correction_task",
+        "consultation"
       ]
     },
     "aggregate_id": {
@@ -52,6 +62,17 @@
     }
   },
   "payload_required_by_event": {
+    "RULE_DRAFTED": [
+      "revision",
+      "audience",
+      "trigger_facts",
+      "advice",
+      "stop_self_care",
+      "referral_level",
+      "source_id",
+      "source_version",
+      "valid_until"
+    ],
     "RULE_REVIEWED": [
       "audience",
       "trigger_facts"
@@ -63,6 +84,24 @@
     "CORRECTION_OPENED": [
       "affected_release",
       "reason"
+    ],
+    "SOURCE_CORRECTED": [
+      "source_version",
+      "reason"
+    ],
+    "NOTICE_PAUSED": [
+      "reason"
+    ],
+    "CONSULTATION_RECORDED": [
+      "facts",
+      "result"
+    ],
+    "CONSULTATION_ESCALATED": [
+      "conflicting_keys",
+      "reason"
+    ],
+    "CONSULTATION_RESOLVED": [
+      "resolution"
     ]
   },
   "additionalProperties": false
